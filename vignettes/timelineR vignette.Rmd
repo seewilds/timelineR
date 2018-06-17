@@ -1,0 +1,59 @@
+---
+title: "timelineR vignette"
+author: "CW"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{timelineR vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Info
+
+This vignette will demonstrate the use of the timelineR package. It is an extension of the ggplot2 package, dedicated to the plotting of timeline data.It also includes dedicated download and ceaning functions for the NOAA database of hurricanes.
+
+## Download and Cleaning
+
+```{r, eval = FALSE}
+all_hurricanes <- download_sed()
+str(all_hurricanes)
+```
+
+```{r, eval = FALSE}
+all_hurricanes_clean <- eq_clean_data(all_hurricanes)
+str(all_hurricanes_clean)
+```
+
+```{r, eval = FALSE}
+final_hurricanes <- eq_clean_data(all_hurricanes_clean)
+str(final_hurricanes)
+```
+
+## geom_timeline
+
+```{r, eval = FALSE}
+ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01")))
+```
+
+## geom_timeline_label
+
+```{r, eval = FALSE}
+ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))
+```
+
+## Leaflet Mapping
+```{r, eval = FALSE}
+eq_map(usa_hurricanes, annot_col = 'DATE')
+```
+
+```{r, eval = FALSE}
+usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')
+```
