@@ -1,5 +1,5 @@
 ---
-title: "timelineR vignette"
+title: "timelineR_vignette"
 author: "CW"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

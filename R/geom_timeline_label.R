@@ -1,5 +1,5 @@
 #' @inheritParams ggplot2-ggproto
-StatTimelabel <- ggproto("StatTimelabel", Stat, 
+StatTimelabel <- ggplot2::ggproto("StatTimelabel", ggplot2::Stat, 
                         compute_group = function(data, scales) {
                           df <- data%>%filter(x>=xmin)
                           ifelse( "n_max" %in% colnames(data), df <- data%>%arrange(EQ_PRIMARY)%>%slice(1:n_max), df)
@@ -49,11 +49,11 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
 }
 
 #' @inheritParams ggplot2-ggproto
-GeomTimelabel <- ggproto("GeomTimelabel", Geom,
+GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
                         required_aes = c("x", "xmin", "label"),
                         optional_aes = c("n_max"),
-                        default_aes = aes(lwd=1, col = "red", fontsize = 8),
-                        draw_key = draw_key_point,
+                        default_aes = ggplot2::aes(lwd=1, col = "red", fontsize = 8),
+                        draw_key = ggplot2::draw_key_point,
                         draw_panel = draw_panel_function_line
 )
 

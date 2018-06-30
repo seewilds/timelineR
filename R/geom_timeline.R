@@ -1,5 +1,5 @@
 #' @inheritParams ggplot2-ggproto
-StatTimeline <- ggproto("StatTimeline", Stat, 
+StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat, 
                          compute_group = function(data, scales) {
                            df <- data%>%filter(x>=xmin)
                            df
@@ -44,10 +44,10 @@ draw_panel_function <- function(data, panel_scales, coord) {
 }
 
 #' @inheritParams ggplot2-ggproto
-GeomTimeline <- ggproto("GeomTimeline", Geom,
+GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          required_aes = c("x", "xmin"),
-                         default_aes = aes(shape= 21, col = "black", fill = "red", alpha = 1, stroke=1, size = 10),
-                         draw_key = draw_key_point,
+                         default_aes = ggplot2::aes(shape= 21, col = "black", fill = "red", alpha = 1, stroke=1, size = 10),
+                         draw_key = ggplot2::draw_key_point,
                          draw_panel = draw_panel_function
 )
 
