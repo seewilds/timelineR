@@ -8,7 +8,7 @@
 #' the NOAA hurricane database
 #'
 #' @examples
-#' all_hurricanes <- download_sed()
+#' \donttest{all_hurricanes <- download_sed()}
 #'
 #' @export
 download_sed <- function(){
@@ -26,7 +26,7 @@ download_sed <- function(){
 #' @return This function returns a cleaned data frame.
 #'
 #' @examples
-#' all_hurricanes_clean <- eq_clean_data(all_hurricanes)
+#' \donttest{all_hurricanes_clean <- eq_clean_data(all_hurricanes)}
 #'
 #' @export
 eq_clean_data <- function(df){
@@ -50,7 +50,7 @@ eq_clean_data <- function(df){
 #' LOCATION_NAME.
 #'
 #' @examples
-#' final_hurricanes <- eq_location_clean(all_hurricanes_clean)
+#' \donttest{final_hurricanes <- eq_location_clean(all_hurricanes_clean)}
 #'
 #' @export
 eq_location_clean <- function(df){

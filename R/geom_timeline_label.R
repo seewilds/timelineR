@@ -84,7 +84,7 @@ GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
 #' @return
 #'
 #' @examples
-#' ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))
+#' \donttest{ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))}
 #' @export
 geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "timelabel", 
                           position = "identity", show.legend = FALSE, 

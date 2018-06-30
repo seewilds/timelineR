@@ -79,8 +79,8 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 #' @return
 #' 
 #' @examples
-#' usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
-#' ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1999-01-01")))
+#' \donttest{usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
+#' ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1999-01-01")))}
 #' 
 #' @export
 geom_timeline <- function(mapping = NULL, data = NULL, stat = "timeline", 

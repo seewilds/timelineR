@@ -8,7 +8,7 @@
 #' 
 #' 
 #' @examples
-#' eq_map(usa_hurricanes, annot_col = 'DATE')
+#' \donttest{eq_map(usa_hurricanes, annot_col = 'DATE')}
 #' 
 #' @export
 eq_map <- function(df, annot_col){
@@ -26,7 +26,7 @@ eq_map <- function(df, annot_col){
 #' 
 #' 
 #' @examples
-#' usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')
+#' \donttest{usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')}
 #' 
 #' @export
 eq_create_label <- function(df){
