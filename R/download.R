@@ -30,7 +30,7 @@ download_sed <- function(){
 #' @examples
 #' \donttest{all_hurricanes_clean <- eq_clean_data(all_hurricanes)}
 #'
-#'@importFrom  chron julian
+#'@importFrom chron julian
 #'
 #' @export
 eq_clean_data <- function(df){
