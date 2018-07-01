@@ -16,4 +16,5 @@ Imports: chron,
     utils,
     ggplot2,
     grid,
-    leaflet
+    leaflet,
+    dplyr
