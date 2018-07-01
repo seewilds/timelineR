@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+[![Build Status](https://travis-ci.com/seewilds/timelineR.svg?branch=master)](https://travis-ci.com/seewilds/timelineR)
 
 ## Vignette Info
 
