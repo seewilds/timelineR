@@ -20,4 +20,5 @@ column.
 \examples{
 \donttest{all_hurricanes_clean <- eq_clean_data(all_hurricanes)}
 
+
 }
