@@ -52,7 +52,7 @@ over time.
 usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
 ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01")))
 ```
-![](figures/geom_timeline_pic.tiff)
+![](timelineR/figures/geom_timeline_pic.tiff)
 
 ## geom_timeline_label
 
@@ -70,11 +70,11 @@ ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.D
 ```{r, eval = FALSE, collapse=TRUE}
 eq_map(usa_hurricanes, annot_col = 'DATE')
 ```
-![](figures/eq_map_pic.png)
+![](timelineR/figures/eq_map_pic.png)
 
 ***eq_create_label()*** generates an annotation column in the NOAA data frame
 for use within the leaflet map.
-![](figures/eq_map_label_pic.png)
+![](timelineR/figures/eq_map_label_pic.png)
 
 
 ```{r, eval = FALSE, collapse=TRUE}
