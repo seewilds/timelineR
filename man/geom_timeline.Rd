@@ -48,7 +48,7 @@ are in bold):
 }
 
 \examples{
-usa_hurricanes <- final_hurricanes\%>\%filter(COUNTRY == "USA")
-ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1999-01-01")))
+\donttest{usa_hurricanes <- final_hurricanes\%>\%filter(COUNTRY == "USA")
+ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1999-01-01")))}
 
 }

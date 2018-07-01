@@ -16,6 +16,6 @@ eq_create_label(df)
 eq_create_label
 }
 \examples{
-usa_hurricanes\%>\%eq_create_label(.)\%>\%eq_map(annot_col = 'popup_text')
+\donttest{usa_hurricanes\%>\%eq_create_label(.)\%>\%eq_map(annot_col = 'popup_text')}
 
 }

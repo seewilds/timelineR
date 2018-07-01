@@ -16,6 +16,6 @@ National Centres for Environmental Information, compiled by the National
 Oceanic and Atmospheric Administration (NOAA).
 }
 \examples{
-all_hurricanes <- download_sed()
+\donttest{all_hurricanes <- download_sed()}
 
 }

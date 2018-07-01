@@ -18,6 +18,6 @@ eq_map(df, annot_col)
 eq_map
 }
 \examples{
-eq_map(usa_hurricanes, annot_col = 'DATE')
+\donttest{eq_map(usa_hurricanes, annot_col = 'DATE')}
 
 }

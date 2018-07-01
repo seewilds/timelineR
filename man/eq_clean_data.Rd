@@ -18,6 +18,6 @@ converts lattitute and longitude to numeric types, and creates a DATE
 column.
 }
 \examples{
-all_hurricanes_clean <- eq_clean_data(all_hurricanes)
+\donttest{all_hurricanes_clean <- eq_clean_data(all_hurricanes)}
 
 }

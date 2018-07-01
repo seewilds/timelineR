@@ -18,6 +18,6 @@ This function takes the NOAA hurricane data and cleans the LOCATION_NAME
 column.
 }
 \examples{
-final_hurricanes <- eq_location_clean(all_hurricanes_clean)
+\donttest{final_hurricanes <- eq_location_clean(all_hurricanes_clean)}
 
 }
