@@ -12,4 +12,8 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports: chron
+Imports: chron,
+    utils,
+    ggplot2,
+    grid,
+    leaflet

@@ -1,7 +1,4 @@
 #' @inheritParams ggplot2-ggproto
-#' 
-#' @importFrom ggplot2 ggproto
-#' @importFrom ggplot2 Stat
 StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat, 
                          compute_group = function(data, scales) {
                            df <- data%>%filter(x>=xmin)
@@ -12,7 +9,6 @@ StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
 )
 
 #' @inheritParams geom_timeline
-#' @importFrom ggplot2 layer
 stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
                            position = "identity", show.legend = TRUE, 
                            outliers = TRUE, inherit.aes = TRUE, ...) {
@@ -28,11 +24,7 @@ stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
   )        
 }
 
-#'@importFrom grid segmentsGrob
-#'@importFrom grid pointsGrob
-#'@importFrom grid gpar
-#'@importFrom grid gTree
-#'@importFrom grid gList
+#'
 draw_panel_function <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   
@@ -51,11 +43,8 @@ draw_panel_function <- function(data, panel_scales, coord) {
   
 }
 
+#' geom_timeline
 #' @inheritParams ggplot2-ggproto
-#' @importFrom ggplot2 ggproto
-#' @importFrom ggplot2 Geom
-#' @importFrom ggplot2 aes
-#' @importFrom ggplot2 draw_key_point
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          required_aes = c("x", "xmin"),
                          default_aes = ggplot2::aes(shape= 21, col = "black", fill = "red", alpha = 1, stroke=1, size = 10),
@@ -63,7 +52,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          draw_panel = draw_panel_function
 )
 
-#' geom_timeline
+#'geom_timeline
 #'
 #' @param mapping 
 #' @param data 
@@ -93,8 +82,6 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 #' @examples
 #' \donttest{usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
 #' ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1999-01-01")))}
-#' 
-#' @importFrom ggplot2 layer
 #' 
 #' @export
 geom_timeline <- function(mapping = NULL, data = NULL, stat = "timeline", 

@@ -10,8 +10,6 @@
 #' @examples
 #' \donttest{all_hurricanes <- download_sed()}
 #'
-#'@importFrom utils read.table
-#'
 #' @export
 download_sed <- function(){
   read.table("https://www.ngdc.noaa.gov/nndc/struts/results?type_0=Exact&query_0=$ID&t=101650&s=13&d=189&dfn=signif.txt", sep = "\t", header = TRUE, fill =TRUE, quote = "", stringsAsFactors = FALSE)

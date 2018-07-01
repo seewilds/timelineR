@@ -1,4 +1,3 @@
-
 #' eq_map
 #'
 #' @param df 
