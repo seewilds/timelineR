@@ -3,7 +3,7 @@ Title: ggplot2 Extension for Plotting Timeline Data
 Version: 0.0.0.9000
 Authors@R: person("C", "W", email = "c.w@example.com", role = c("aut", "cre"))
 Description: Dedicated extension for plotting timeline data with the ggplot2 package.
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.4.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
