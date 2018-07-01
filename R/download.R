@@ -10,6 +10,8 @@
 #' @examples
 #' \donttest{all_hurricanes <- download_sed()}
 #'
+#'@importFrom utils read.table
+#'
 #' @export
 download_sed <- function(){
   read.table("https://www.ngdc.noaa.gov/nndc/struts/results?type_0=Exact&query_0=$ID&t=101650&s=13&d=189&dfn=signif.txt", sep = "\t", header = TRUE, fill =TRUE, quote = "", stringsAsFactors = FALSE)
@@ -28,6 +30,7 @@ download_sed <- function(){
 #' @examples
 #' \donttest{all_hurricanes_clean <- eq_clean_data(all_hurricanes)}
 #'
+#'@importFrom chron julian.default
 #'
 #' @export
 eq_clean_data <- function(df){
