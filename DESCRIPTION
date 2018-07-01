@@ -12,7 +12,3 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports: ggplot2,
-    leaflet,
-    chron,
-    dplyr

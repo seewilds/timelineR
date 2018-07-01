@@ -1,4 +1,6 @@
 #' @inheritParams ggplot2-ggproto
+#' @importFrom ggplot2 ggproto
+#' @importFrom ggplot2 Stat
 StatTimelabel <- ggplot2::ggproto("StatTimelabel", ggplot2::Stat, 
                         compute_group = function(data, scales) {
                           df <- data%>%filter(x>=xmin)
@@ -10,6 +12,7 @@ StatTimelabel <- ggplot2::ggproto("StatTimelabel", ggplot2::Stat,
 )
 
 #' @inheritParams geom_timeline_label
+#' @importFrom ggplot2 layer
 stat_timelabel <- function(mapping = NULL, data = NULL, geom = "timelabel",
                           position = "identity", show.legend = TRUE, 
                           outliers = TRUE, inherit.aes = TRUE, ...) {
@@ -25,6 +28,11 @@ stat_timelabel <- function(mapping = NULL, data = NULL, geom = "timelabel",
   )        
 }
 
+#'@importFrom grid segmentsGrob
+#'@importFrom grid gpar
+#'@importFrom grid textGrob
+#'@importFrom grid gList
+#'@importFrom grid gTree
 draw_panel_function_line <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   coords <- coord$transform(data, panel_scales) 
@@ -49,6 +57,9 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
 }
 
 #' @inheritParams ggplot2-ggproto
+#' @importFrom ggplot2 ggproto
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 draw_key_point
 GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
                         required_aes = c("x", "xmin", "label"),
                         optional_aes = c("n_max"),
@@ -85,6 +96,8 @@ GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
 #'
 #' @examples
 #' \donttest{ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))}
+#' 
+#' @importFrom ggplot2 layer
 #' @export
 geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "timelabel", 
                           position = "identity", show.legend = FALSE, 

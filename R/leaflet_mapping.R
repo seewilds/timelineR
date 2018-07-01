@@ -10,6 +10,10 @@
 #' @examples
 #' \donttest{eq_map(usa_hurricanes, annot_col = 'DATE')}
 #' 
+#' @importFrom leaflet leaflet
+#' @importFrom leaflet addTiles
+#' @importFrom leaflet addCircleMarkers
+#' 
 #' @export
 eq_map <- function(df, annot_col){
   m <- leaflet::leaflet()#%>%
