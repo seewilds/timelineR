@@ -7,7 +7,6 @@ StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
                          required_aes = c("x", "xmin"),
                          optional_aes = c("y")
 )
-
 #' @inheritParams geom_timeline
 stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
                            position = "identity", show.legend = TRUE, 
@@ -23,7 +22,6 @@ stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
     params = params
   )        
 }
-
 #'
 draw_panel_function <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
@@ -42,8 +40,7 @@ draw_panel_function <- function(data, panel_scales, coord) {
   grid::gTree(children = grid::gList(liness, dots))
   
 }
-
-#' geom_timeline
+#' GeomTimeline
 #' @inheritParams ggplot2-ggproto
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          required_aes = c("x", "xmin"),
@@ -51,8 +48,9 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          draw_key = ggplot2::draw_key_point,
                          draw_panel = draw_panel_function
 )
-
 #' geom_timeline
+#' 
+#' Geom for mapping instances of an event over time.
 #'
 #' @param mapping Set of aesthetic mappings created by aes or aes_. 
 #' If specified and inherit.aes = TRUE (the default), it is combined 
@@ -83,7 +81,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 #' rather than combining with them. This is most useful for helper 
 #' functions that define both data and aesthetics and shouldn't inherit 
 #' behaviour from the default plot specification, e.g. borders.
-#' @param other arguments passed on to layer. These are often aesthetics, 
+#' @param ... other arguments passed on to layer. These are often aesthetics, 
 #' used to set an aesthetic to a fixed value, like color = "red" or 
 #' size = 3. They may also be parameters to the paired geom/stat.
 #' 
@@ -91,14 +89,13 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 #' geom_timeline understands the following aesthetics (required aesthetics 
 #' are in bold):
 #' \itemize{
-#'  \item{\strong{"x"}}{column of longitude values}
-#'  \item{\strong{"xmin"}}{column of latitude values}
-#'  \item{"y"}{column of North West maximum wind radial extent, in 
-#'  nautical miles}
-#'  \item{"shape"}{not recommended}
+#'  \item{\strong{"x"}}{column of date values}
+#'  \item{\strong{"xmin"}}{date to start plot, ending at last date}
+#'  \item{"y"}{optional stratification columns}
+#'  \item{"shape"}{sets shape}
 #'  \item{"col"}{desired color, entered as a single string, or on column}
-#'  \item{"fill"}{sets tranparency}
-#'  \item{"alpha"}{not recommended}
+#'  \item{"fill"}{sets fill}
+#'  \item{"alpha"}{sets tranparency}
 #' } 
 #'
 #' @return gglist

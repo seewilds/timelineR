@@ -45,26 +45,28 @@ rather than combining with them. This is most useful for helper
 functions that define both data and aesthetics and shouldn't inherit 
 behaviour from the default plot specification, e.g. borders.}
 
-\item{other}{arguments passed on to layer. These are often aesthetics, 
+\item{...}{other arguments passed on to layer. These are often aesthetics, 
 used to set an aesthetic to a fixed value, like color = "red" or 
 size = 3. They may also be parameters to the paired geom/stat.}
 }
 \value{
 gglist
 }
+\description{
+Geom for mapping instances of an event over time.
+}
 \section{Aesthetics}{
 
 geom_timeline understands the following aesthetics (required aesthetics 
 are in bold):
 \itemize{
- \item{\strong{"x"}}{column of longitude values}
- \item{\strong{"xmin"}}{column of latitude values}
- \item{"y"}{column of North West maximum wind radial extent, in 
- nautical miles}
- \item{"shape"}{not recommended}
+ \item{\strong{"x"}}{column of date values}
+ \item{\strong{"xmin"}}{date to start plot, ending at last date}
+ \item{"y"}{optional stratification columns}
+ \item{"shape"}{sets shape}
  \item{"col"}{desired color, entered as a single string, or on column}
- \item{"fill"}{sets tranparency}
- \item{"alpha"}{not recommended}
+ \item{"fill"}{sets fill}
+ \item{"alpha"}{sets tranparency}
 }
 }
 

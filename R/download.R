@@ -32,9 +32,9 @@ download_sed <- function(){
 eq_clean_data <- function(df){
   df$LATITUDE <- as.integer(df$LATITUDE)
   df$LONGITUDE <- as.integer(df$LONGITUDE)
-  df$MONTH[is.na(df$MONTH)] <- as.integer(01)
-  df$DAY[is.na(df$DAY)] <- as.integer(01)
-  df$DATE <- base::julian(df$MONTH, df$DAY, df$YEAR)
+  df$MONTH[is.na(df$MONTH)] <- as.Date.numeric(01)
+  df$DAY[is.na(df$DAY)] <- as.Date.numeric(01)
+  df$DATE <- base::julian(df$MONTH, df$DAY, as.Date.numeric(df$YEAR))
   df$DATE <- as.Date(df$DATE, origin = "1970-01-01")
   df
 }

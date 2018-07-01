@@ -9,24 +9,48 @@ geom_timeline_label(mapping = NULL, data = NULL, stat = "timelabel",
   inherit.aes = TRUE, ...)
 }
 \arguments{
-\item{mapping}{}
+\item{mapping}{Set of aesthetic mappings created by aes or aes_. 
+If specified and inherit.aes = TRUE (the default), it is combined 
+with the default mapping at the top level of the plot. You must 
+supply mapping if there is no plot mapping.}
 
-\item{data}{}
+\item{data}{The data to be displayed in this layer. There are three 
+options:
+If NULL, the default, the data is inherited from the plot data as 
+specified in the call to ggplot.
 
-\item{stat}{}
+A data.frame, or other object, will 
+override the plot data. All objects will be fortified to produce 
+a data frame. See fortify for which variables will be created. 
 
-\item{position}{}
+A function will be called with a single argument, the plot data. 
+The return value must be a data.frame., and will be used as the 
+layer data.}
 
-\item{show.legend}{}
+\item{stat}{The statistical transformation to use on the data for 
+this layer, as a string.}
 
-\item{na.rm}{}
+\item{position}{Position adjustment, either as a string, or the 
+result of a call to a position adjustment function.}
 
-\item{inherit.aes}{}
+\item{show.legend}{logical. Should this layer be included in the 
+legends? NA, the default, includes if any aesthetics are mapped. 
+FALSE never includes, and TRUE always includes.}
 
-\item{...}{}
+\item{na.rm}{If FALSE, the default, missing values are removed 
+with a warning. If TRUE, missing values are silently removed.}
+
+\item{inherit.aes}{If FALSE, overrides the default aesthetics, 
+rather than combining with them. This is most useful for helper 
+functions that define both data and aesthetics and shouldn't inherit 
+behaviour from the default plot specification, e.g. borders.}
+
+\item{...}{other arguments passed on to layer. These are often aesthetics, 
+used to set an aesthetic to a fixed value, like color = "red" or 
+size = 3. They may also be parameters to the paired geom/stat.}
 }
 \value{
-
+gglist
 }
 \description{
 geom_timeline_label
@@ -36,14 +60,13 @@ geom_timeline_label
 geom_timeline_label understands the following aesthetics (required aesthetics 
 are in bold):
 \itemize{
- \item{\strong{"x"}}{column of longitude values}
- \item{\strong{"xmin"}}{column of latitude values}
- \item{\strong{"label"}}{column of North West maximum wind radial extent, in 
- nautical miles}
+ \item{\strong{"x"}}{column of date values}
+ \item{\strong{"xmin"}}{date to start plot, ending at last date}
+ \item{\strong{"label"}}{column of labels to plot}
  \item{"n_max"}{not recommended}
  \item{"lwd"}{desired color, entered as a single string, or on column}
- \item{"col"}{sets tranparency}
- \item{"fontsize"}{not recommended}
+ \item{"col"}{sets colour}
+ \item{"fontsize"}{sets fontsize}
 }
 }
 

@@ -3,12 +3,12 @@
 \docType{data}
 \name{GeomTimeline}
 \alias{GeomTimeline}
-\title{geom_timeline}
+\title{GeomTimeline}
 \format{An object of class \code{GeomTimeline} (inherits from \code{Geom}, \code{ggproto}) of length 5.}
 \usage{
 GeomTimeline
 }
 \description{
-geom_timeline
+GeomTimeline
 }
 \keyword{datasets}
