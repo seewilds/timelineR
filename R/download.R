@@ -30,8 +30,8 @@ download_sed <- function(){
 #'
 #' @export
 eq_clean_data <- function(df){
-  df$LATITUDE <- as.numeric(df$LATITUDE)
-  df$LONGITUDE <- as.numeric(df$LONGITUDE)
+  df$LATITUDE <- as.integer(df$LATITUDE)
+  df$LONGITUDE <- as.integer(df$LONGITUDE)
   df$MONTH[is.na(df$MONTH)] <- 01
   df$DAY[is.na(df$DAY)] <- 01
   df$DATE <- julian(df$MONTH, df$DAY, df$YEAR)
