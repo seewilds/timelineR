@@ -12,9 +12,9 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports: chron,
-    utils,
+Imports: utils,
     ggplot2,
     grid,
     leaflet,
-    dplyr
+    dplyr,
+    base
