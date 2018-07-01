@@ -28,7 +28,6 @@ draw_panel_function <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   
   coords <- coord$transform(data, panel_scales) 
-  str(coords)
   liness = grid::segmentsGrob(y0 = unit(c(coords$y, coords$y), "native"), y1 = unit(c(coords$y, coords$y), "native"))
   
   dots = grid::pointsGrob(
@@ -86,7 +85,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 geom_timeline <- function(mapping = NULL, data = NULL, stat = "timeline", 
                           position = "identity", show.legend = TRUE, 
                           na.rm = FALSE, inherit.aes = TRUE, ...) {
-  layer(
+  ggplot2::layer(
     data = data, 
     mapping = mapping,
     stat = stat,

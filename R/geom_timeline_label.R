@@ -89,7 +89,7 @@ GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
 geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "timelabel", 
                           position = "identity", show.legend = FALSE, 
                           na.rm = FALSE, inherit.aes = TRUE, ...) {
-  layer(
+  ggplot2::layer(
     data = data, 
     mapping = mapping,
     stat = stat,
