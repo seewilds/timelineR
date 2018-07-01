@@ -34,7 +34,7 @@ eq_clean_data <- function(df){
   df$LONGITUDE <- as.integer(df$LONGITUDE)
   df$MONTH[is.na(df$MONTH)] <- 01
   df$DAY[is.na(df$DAY)] <- 01
-  df$DATE <- julian(x = df$MONTH,  d = df$DAY, y = df$YEAR)
+  df$DATE <- julian.Date(x = df$MONTH,  d = df$DAY, y = df$YEAR)
   df$DATE <- as.Date(df$DATE, origin = "1970-01-01")
   df
 }
