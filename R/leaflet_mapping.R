@@ -21,7 +21,6 @@ eq_map <- function(df, annot_col){
 #'
 #' @return data frame with column of annotations
 #' 
-#' 
 #' @examples
 #' \donttest{usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')}
 #' 

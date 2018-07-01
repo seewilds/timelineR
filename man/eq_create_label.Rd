@@ -7,10 +7,10 @@
 eq_create_label(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{a data frame}
 }
 \value{
-
+data frame with column of annotations
 }
 \description{
 eq_create_label

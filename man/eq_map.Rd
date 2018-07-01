@@ -7,12 +7,12 @@
 eq_map(df, annot_col)
 }
 \arguments{
-\item{df}{}
+\item{df}{a data frame}
 
-\item{annot_col}{}
+\item{annot_col}{column to take annotations from}
 }
 \value{
-
+leaflet map
 }
 \description{
 eq_map
