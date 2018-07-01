@@ -39,6 +39,8 @@ usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
 ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01")))
 ```
 
+![](figures/geom_timeline_pic.tiff)
+
 geom\_timeline\_label
 ---------------------
 
@@ -47,6 +49,8 @@ geom\_timeline\_label
 ``` r
 ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))
 ```
+
+![](figures/geom_timeline_label_pic.tiff)
 
 Leaflet Mapping
 ---------------
@@ -57,7 +61,9 @@ Leaflet Mapping
 eq_map(usa_hurricanes, annot_col = 'DATE')
 ```
 
-***eq\_create\_label()*** generates an annotation column in the NOAA data frame for use within the leaflet map.
+![](figures/eq_map_pic.png)
+
+***eq\_create\_label()*** generates an annotation column in the NOAA data frame for use within the leaflet map. ![](figures/eq_map_label_pic.png)
 
 ``` r
 usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')

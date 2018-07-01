@@ -22,55 +22,61 @@ This vignette will demonstrate the use of the timelineR package. It is an extens
 
 ## Download and Cleaning
 
-download_sed() downloads the NOAA database of hurricanes as a data frame.
+***download_sed()*** downloads the NOAA database of hurricanes as a data frame.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
 all_hurricanes <- download_sed()
-str(all_hurricanes)
+head(str(all_hurricanes))
 ```
 
-eq_clean_data() cleans the NOAA data frame by converting the LATTITUDE and LONGITUDE columns to integers, and creates a dedicated DATE column.
+***eq_clean_data()*** cleans the NOAA data frame by converting the LATTITUDE and LONGITUDE columns to integers, and creates a dedicated DATE column.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
 all_hurricanes_clean <- eq_clean_data(all_hurricanes)
 str(all_hurricanes_clean)
 ```
 
-eq_location_clean() cleans the Location column of the NOAA data frame.
+***eq_location_clean()*** cleans the Location column of the NOAA data frame.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
 final_hurricanes <- eq_location_clean(all_hurricanes_clean)
 str(final_hurricanes)
 ```
 
 ## geom_timeline
 
-geom_timeline() creates a ggplot object that plots instances of an event
+***geom_timeline()*** creates a ggplot object that plots instances of an event
 over time.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
+usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
 ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01")))
 ```
+![](figures/geom_timeline_pic.tiff)
 
 ## geom_timeline_label
 
-geom_timeline_label() generates labels for the plotted event instances.
+***geom_timeline_label()*** generates labels for the plotted event instances.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
 ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))
 ```
+![](figures/geom_timeline_label_pic.tiff)
 
 ## Leaflet Mapping
 
-eq_map() generates a leaflet map of locations of the NOAA hurricanes.
+***eq_map()*** generates a leaflet map of locations of the NOAA hurricanes.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, collapse=TRUE}
 eq_map(usa_hurricanes, annot_col = 'DATE')
 ```
+![](figures/eq_map_pic.png)
 
-eq_create_label() generates an annotation column in the NOAA data frame
+***eq_create_label()*** generates an annotation column in the NOAA data frame
 for use within the leaflet map.
+![](figures/eq_map_label_pic.png)
 
-```{r, eval = FALSE}
+
+```{r, eval = FALSE, collapse=TRUE}
 usa_hurricanes%>%eq_create_label(.)%>%eq_map(annot_col = 'popup_text')
 ```
