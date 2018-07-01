@@ -1,13 +1,8 @@
 ---
-title: "timelineR_vignette"
-author: "CW"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{timelineR vignette}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -16,9 +11,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Vignette Info
+## timelineR README
 
-This vignette will demonstrate the use of the timelineR package. It is an extension of the ggplot2 package, dedicated to the plotting of timeline data.It also includes dedicated download and ceaning functions for the NOAA database of hurricanes.
+timelineR is an extension of the ggplot2 package, dedicated to the plotting of timeline data.It also includes dedicated download and ceaning functions for the NOAA database of hurricanes.
 
 ## Download and Cleaning
 
