@@ -17,4 +17,3 @@ Imports: utils,
     grid,
     leaflet,
     dplyr,
-    base

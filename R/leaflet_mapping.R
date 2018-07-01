@@ -1,17 +1,12 @@
 #' eq_map
 #'
-#' @param df 
-#' @param annot_col 
+#' @param df a data frame
+#' @param annot_col column to take annotations from
 #'
-#' @return
-#' 
+#' @return leaflet map
 #' 
 #' @examples
 #' \donttest{eq_map(usa_hurricanes, annot_col = 'DATE')}
-#' 
-#' @importFrom leaflet leaflet
-#' @importFrom leaflet addTiles
-#' @importFrom leaflet addCircleMarkers
 #' 
 #' @export
 eq_map <- function(df, annot_col){
@@ -20,12 +15,11 @@ eq_map <- function(df, annot_col){
   m <- leaflet::addCircleMarkers(map = m, data = df, radius = ~EQ_PRIMARY, lng = ~LONGITUDE, lat = ~LATITUDE, popup = ~paste(eval(parse(text = annot_col))))
   m
   }
-
 #' eq_create_label
 #'
-#' @param df 
+#' @param df a data frame
 #'
-#' @return
+#' @return data frame with column of annotations
 #' 
 #' 
 #' @examples
