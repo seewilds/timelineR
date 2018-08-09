@@ -27,8 +27,8 @@ draw_panel_function <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   
   coords <- coord$transform(data, panel_scales) 
-  liness = grid::segmentsGrob(y0 = unit(c(coords$y, coords$y), "npc"), 
-                              y1 = unit(c(coords$y, coords$y), "npc")
+  liness = grid::segmentsGrob(y0 = grid::unit(c(coords$y, coords$y), "npc"), 
+                              y1 = grid::unit(c(coords$y, coords$y), "npc")
                               )
   
   dots = grid::pointsGrob(
@@ -36,7 +36,7 @@ draw_panel_function <- function(data, panel_scales, coord) {
     y = coords$y,
     pch = coords$shape,
     default.units = "npc",
-    size = unit(coords$size * .pt + coords$stroke * .stroke /2, "points"),
+    size = grid::unit(coords$size * ggplot2::.pt + coords$stroke * ggplot2::.stroke /2, "points"),
     gp = grid::gpar(fill = alpha(coords$fill, coords$alpha), alpha(col = coords$col,coords$alpha), stroke = coords$stroke)
   )
   grid::gTree(children = grid::gList(liness, dots))

@@ -29,17 +29,17 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   coords <- coord$transform(data, panel_scales) 
   #str(coords)
-  segs = grid::segmentsGrob(y0 = unit(coords$y, "npc") + unit(coords$size*3, "points"), 
-                        y1 = unit(coords$y * .pt / 2.5, "npc"),
-                        x0 = unit(coords$x, "npc"),
-                        x1 = unit(coords$x, "npc"),
+  segs = grid::segmentsGrob(y0 = grid::unit(coords$y, "npc") + grid::unit(coords$size*3, "points"), 
+                        y1 = grid::unit(coords$y * ggplot2::.pt / 2.5, "npc"),
+                        x0 = grid::unit(coords$x, "npc"),
+                        x1 = grid::unit(coords$x, "npc"),
                         default.units = "npc",
                         gp = grid::gpar(lwd = coords$size))
   
         texts = grid::textGrob(
                         coords$label,
-                        y = unit(coords$y * .pt / 2.5, "npc"),
-                        x = unit(coords$x, "npc"),
+                        y = grid::unit(coords$y * .pt / 2.5, "npc"),
+                        x = grid::unit(coords$x, "npc"),
                         rot = 45,
                         just = c("left", "bottom"),
                         gp = grid::gpar(fontsize = coords$fontsize))
