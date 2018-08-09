@@ -1,12 +1,12 @@
 #' @inheritParams ggplot2-ggproto
 StatTimelabel <- ggplot2::ggproto("StatTimelabel", ggplot2::Stat, 
                         compute_group = function(data, scales) {
-                          df <- data%>%filter(x>=xmin)
-                          ifelse( "n_max" %in% colnames(data), df <- data%>%arrange(EQ_PRIMARY)%>%slice(1:n_max), df)
+                          df <- data%>%filter(x >= xmin)
+                          ifelse( c("n_max", "label") %in% colnames(df), df <- df%>%dplyr::arrange(dplyr::desc(n_max_arrange))%>%dplyr::slice(1:n_max[1]), df)
                           df
                         },
                         required_aes = c("x", "xmin"),
-                        optional_aes = c("n_max")
+                        optional_aes = c("n_max", "n_max_arrange", "label")
 )
 
 #' @inheritParams geom_timeline_label
@@ -28,17 +28,17 @@ stat_timelabel <- function(mapping = NULL, data = NULL, geom = "timelabel",
 draw_panel_function_line <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   coords <- coord$transform(data, panel_scales) 
-  str(coords)
-  segs = grid::segmentsGrob(y0 = unit(coords$y, "native"), 
-                        y1 = unit(coords$y + 0.05, "native"),
-                        x0 = unit(coords$x, "native"),
-                        x1 = unit((coords$x), "native"),
-                        default.units = "native",
+  #str(coords)
+  segs = grid::segmentsGrob(y0 = unit(coords$y, "npc") + unit(coords$size*3, "points"), 
+                        y1 = unit(coords$y * .pt / 2.5, "npc"),
+                        x0 = unit(coords$x, "npc"),
+                        x1 = unit(coords$x, "npc"),
+                        default.units = "npc",
                         gp = grid::gpar(lwd = coords$size))
   
         texts = grid::textGrob(
                         coords$label,
-                        y = unit(coords$y + 0.05, "npc"),
+                        y = unit(coords$y * .pt / 2.5, "npc"),
                         x = unit(coords$x, "npc"),
                         rot = 45,
                         just = c("left", "bottom"),
@@ -49,13 +49,15 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
 }
 #' @inheritParams ggplot2-ggproto
 GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
-                        required_aes = c("x", "xmin", "label"),
-                        optional_aes = c("n_max"),
-                        default_aes = ggplot2::aes(lwd=1, col = "red", fontsize = 8),
+                        required_aes = c("x", "xmin"),
+                        optional_aes = c("n_max", "label", "n_max_arrange"),
+                        default_aes = ggplot2::aes(lwd=1, col = "black", fontsize = 8),
                         draw_key = ggplot2::draw_key_point,
                         draw_panel = draw_panel_function_line
 )
 #' geom_timeline_label
+#' 
+#' Geom for labelling for geom_timeline
 #'
 #' @param mapping Set of aesthetic mappings created by aes or aes_. 
 #' If specified and inherit.aes = TRUE (the default), it is combined 
@@ -97,7 +99,8 @@ GeomTimelabel <- ggplot2::ggproto("GeomTimelabel", ggplot2::Geom,
 #'  \item{\strong{"x"}}{column of date values}
 #'  \item{\strong{"xmin"}}{date to start plot, ending at last date}
 #'  \item{\strong{"label"}}{column of labels to plot}
-#'  \item{"n_max"}{not recommended}
+#'  \item{\strong{"n_max"}}{maximum number of labels to plot}
+#'  \item{\strong{"n_max_arrange"}}{column used to organize, in descending order, n_max labels}
 #'  \item{"lwd"}{desired color, entered as a single string, or on column}
 #'  \item{"col"}{sets colour}
 #'  \item{"fontsize"}{sets fontsize}

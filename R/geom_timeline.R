@@ -1,7 +1,7 @@
 #' @inheritParams ggplot2-ggproto
 StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat, 
                          compute_group = function(data, scales) {
-                           df <- data%>%filter(x>=xmin)
+                           df <- data%>%dplyr::filter(x >= xmin)
                            df
                          },
                          required_aes = c("x", "xmin"),
@@ -10,7 +10,7 @@ StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
 #' @inheritParams geom_timeline
 stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
                            position = "identity", show.legend = TRUE, 
-                           outliers = TRUE, inherit.aes = TRUE, ...) {
+                           outliers = TRUE, inherit.aes = TRUE, na.rm = TRUE,...) {
   ggplot2::layer(
     stat = StatTimeline, 
     data = data, 
@@ -27,15 +27,17 @@ draw_panel_function <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   
   coords <- coord$transform(data, panel_scales) 
-  liness = grid::segmentsGrob(y0 = unit(c(coords$y, coords$y), "native"), y1 = unit(c(coords$y, coords$y), "native"))
+  liness = grid::segmentsGrob(y0 = unit(c(coords$y, coords$y), "npc"), 
+                              y1 = unit(c(coords$y, coords$y), "npc")
+                              )
   
   dots = grid::pointsGrob(
     x = coords$x,
     y = coords$y,
     pch = coords$shape,
-    default.units = "native",
-    size = unit(coords$size, "points"),
-    gp = grid::gpar(fill = coords$fill, col = coords$col, alpha = coords$alpha, stroke = coords$stroke)
+    default.units = "npc",
+    size = unit(coords$size * .pt + coords$stroke * .stroke /2, "points"),
+    gp = grid::gpar(fill = alpha(coords$fill, coords$alpha), alpha(col = coords$col,coords$alpha), stroke = coords$stroke)
   )
   grid::gTree(children = grid::gList(liness, dots))
   
@@ -44,7 +46,7 @@ draw_panel_function <- function(data, panel_scales, coord) {
 #' @inheritParams ggplot2-ggproto
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                          required_aes = c("x", "xmin"),
-                         default_aes = ggplot2::aes(shape= 21, col = "black", fill = "red", alpha = 1, stroke=1, size = 10),
+                         default_aes = ggplot2::aes(shape= 21,  fill = "dodgerblue4", colour = "dodgerblue4", alpha = 1, stroke=1, size = 12),
                          draw_key = ggplot2::draw_key_point,
                          draw_panel = draw_panel_function
 )
@@ -107,7 +109,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
 #' @export
 geom_timeline <- function(mapping = NULL, data = NULL, stat = "timeline", 
                           position = "identity", show.legend = TRUE, 
-                          na.rm = FALSE, inherit.aes = TRUE, ...) {
+                          na.rm = TRUE, inherit.aes = TRUE, ...) {
   ggplot2::layer(
     data = data, 
     mapping = mapping,

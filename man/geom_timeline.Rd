@@ -5,7 +5,7 @@
 \title{geom_timeline}
 \usage{
 geom_timeline(mapping = NULL, data = NULL, stat = "timeline",
-  position = "identity", show.legend = TRUE, na.rm = FALSE,
+  position = "identity", show.legend = TRUE, na.rm = TRUE,
   inherit.aes = TRUE, ...)
 }
 \arguments{

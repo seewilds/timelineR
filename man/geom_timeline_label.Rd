@@ -53,7 +53,7 @@ size = 3. They may also be parameters to the paired geom/stat.}
 gglist
 }
 \description{
-geom_timeline_label
+Geom for labelling for geom_timeline
 }
 \section{Aesthetics}{
 
@@ -63,7 +63,8 @@ are in bold):
  \item{\strong{"x"}}{column of date values}
  \item{\strong{"xmin"}}{date to start plot, ending at last date}
  \item{\strong{"label"}}{column of labels to plot}
- \item{"n_max"}{not recommended}
+ \item{\strong{"n_max"}}{maximum number of labels to plot}
+ \item{\strong{"n_max_arrange"}}{column used to organize, in descending order, n_max labels}
  \item{"lwd"}{desired color, entered as a single string, or on column}
  \item{"col"}{sets colour}
  \item{"fontsize"}{sets fontsize}
