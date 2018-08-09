@@ -6,6 +6,10 @@
 \usage{
 theme_timeline(...)
 }
+\arguments{
+\item{...}{additional element specifications not part of base ggplot2. If
+supplied \code{validate} needs to be set to \code{FALSE}.}
+}
 \description{
 dedicated theme for use with the timelineR package.
 }
