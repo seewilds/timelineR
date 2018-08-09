@@ -19,7 +19,7 @@ stat_timeline<- function(mapping = NULL, data = NULL, geom = "timeline",
     position = position, 
     show.legend = show.legend, 
     inherit.aes = inherit.aes,
-    params = params
+    params = list(na.rm = na.rm, ...)
   )        
 }
 #'
@@ -37,7 +37,7 @@ draw_panel_function <- function(data, panel_scales, coord) {
     pch = coords$shape,
     default.units = "npc",
     size = grid::unit(coords$size * ggplot2::.pt + coords$stroke * ggplot2::.stroke /2, "points"),
-    gp = grid::gpar(fill = ggplot2::alpha(coords$fill, coords$alpha), alpha(col = coords$col,coords$alpha), stroke = coords$stroke)
+    gp = grid::gpar(fill = ggplot2::alpha(coords$fill, coords$alpha), ggplot2::alpha(col = coords$col,coords$alpha), stroke = coords$stroke)
   )
   grid::gTree(children = grid::gList(liness, dots))
   

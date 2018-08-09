@@ -21,7 +21,7 @@ stat_timelabel <- function(mapping = NULL, data = NULL, geom = "timelabel",
     position = position, 
     show.legend = show.legend, 
     inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
+    params = list(na.rm = ggplot2::na.rm, ...)
   )        
 }
 #'
@@ -29,8 +29,8 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
   ifelse( "y" %in% colnames(data), data$y <- data$y, data$y <- rep(1/3, nrow(data)))
   coords <- coord$transform(data, panel_scales) 
   #str(coords)
-  segs = grid::segmentsGrob(y0 = grid::unit(coords$y, "npc") + grid::unit(coords$size*3, "points"), 
-                        y1 = grid::unit(coords$y * ggplot2::.pt / 2.5, "npc"),
+  segs = grid::segmentsGrob(y0 = grid::unit(coords$y, "npc") + grid::unit(coords$size*6, "points"), 
+                        y1 = grid::unit(coords$y + 2.85/ 2.5/50, "npc"),
                         x0 = grid::unit(coords$x, "npc"),
                         x1 = grid::unit(coords$x, "npc"),
                         default.units = "npc",
@@ -38,7 +38,7 @@ draw_panel_function_line <- function(data, panel_scales, coord) {
   
         texts = grid::textGrob(
                         coords$label,
-                        y = grid::unit(coords$y * .pt / 2.5, "npc"),
+                        y = grid::unit(coords$y + 2.85/ 2.5/50, "npc"),
                         x = grid::unit(coords$x, "npc"),
                         rot = 45,
                         just = c("left", "bottom"),
