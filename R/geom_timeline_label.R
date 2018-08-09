@@ -21,7 +21,7 @@ stat_timelabel <- function(mapping = NULL, data = NULL, geom = "timelabel",
     position = position, 
     show.legend = show.legend, 
     inherit.aes = inherit.aes,
-    params = params
+    params = list(na.rm = na.rm, ...)
   )        
 }
 #'
