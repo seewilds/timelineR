@@ -1,7 +1,7 @@
 #' @inheritParams ggplot2-ggproto
 StatTimelabel <- ggplot2::ggproto("StatTimelabel", ggplot2::Stat, 
                         compute_group = function(data, scales) {
-                          df <- data%>%filter(x >= xmin)
+                          df <- data%>%dplyr::filter(x >= xmin)
                           ifelse( c("n_max", "label") %in% colnames(df), df <- df%>%dplyr::arrange(dplyr::desc(n_max_arrange))%>%dplyr::slice(1:n_max[1]), df)
                           df
                         },
