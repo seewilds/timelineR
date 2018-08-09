@@ -1,3 +1,7 @@
+#' theme_timeline
+#' 
+#' dedicated theme for use with the timelineR package.
+#' 
 #' @inheritParams ggplot2-theme
 #' 
 #' @export
