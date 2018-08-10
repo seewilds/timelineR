@@ -38,7 +38,9 @@ geom\_timeline
 
 ``` r
 usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
-ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01")))
+usa_plot <- ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) 
+usa_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"))) +
+theme_timeline()
 ```
 
 ![](figures/geom_timeline_pic.tiff)
@@ -49,7 +51,11 @@ geom\_timeline\_label
 ***geom\_timeline\_label()*** generates labels for the plotted event instances.
 
 ``` r
-ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) + geom_timeline(aes(xmin =as.Date("1990-01-01"))) + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME))
+data <- final_hurricanes%>%filter(COUNTRY%in%c("USA", "CANADA", "CHINA", "INDIA"))
+country_plot <- ggplot(data, aes(DATE, COUNTRY)) 
+country_plot <- country_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"), size = EQ_PRIMARY, fill = TOTAL_DEATHS)) 
+country_plot <- country_plot + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME, n_max = 10, n_max_arrange = EQ_PRIMARY))
+country_plot <- country_plot + theme_timeline()
 ```
 
 ![](figures/geom_timeline_label_pic.tiff)
