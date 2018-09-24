@@ -39,8 +39,7 @@ geom\_timeline
 ``` r
 usa_hurricanes <- final_hurricanes%>%filter(COUNTRY == "USA")
 usa_plot <- ggplot(data = usa_hurricanes, aes(DATE, COUNTRY)) 
-usa_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"))) +
-theme_timeline()
+usa_plot + geom_timeline(aes(xmin =as.Date("1990-01-01")))
 ```
 
 ![](figures/geom_timeline_pic.png)
