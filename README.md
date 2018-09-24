@@ -43,7 +43,7 @@ usa_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"))) +
 theme_timeline()
 ```
 
-![](figures/geom_timeline_pic.tiff)
+![](figures/geom_timeline_pic.png)
 
 geom\_timeline\_label
 ---------------------
@@ -58,7 +58,7 @@ country_plot <- country_plot + geom_timeline_label(aes(xmin =as.Date("1990-01-01
 country_plot <- country_plot + theme_timeline()
 ```
 
-![](figures/geom_timeline_label_pic.tiff)
+![](figures/geom_timeline_label_pic.png)
 
 Leaflet Mapping
 ---------------

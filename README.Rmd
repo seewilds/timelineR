@@ -50,7 +50,7 @@ usa_plot <- ggplot(data = usa_hurricanes, aes(DATE, COUNTRY))
 usa_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"))) +
 theme_timeline()
 ```
-![](figures/geom_timeline_pic.tiff)
+![](figures/geom_timeline_pic.png)
 
 ## geom_timeline_label
 
@@ -63,7 +63,7 @@ country_plot <- country_plot + geom_timeline(aes(xmin =as.Date("1990-01-01"), si
 country_plot <- country_plot + geom_timeline_label(aes(xmin =as.Date("1990-01-01"), label = LOCATION_NAME, n_max = 10, n_max_arrange = EQ_PRIMARY))
 country_plot <- country_plot + theme_timeline()
 ```
-![](figures/geom_timeline_label_pic.tiff)
+![](figures/geom_timeline_label_pic.png)
 
 ## Leaflet Mapping
 
